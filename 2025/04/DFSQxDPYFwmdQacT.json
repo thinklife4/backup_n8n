@@ -1,0 +1,175 @@
+{
+  "active": false,
+  "connections": {
+    "Customer Datastore": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Customer Datastore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Customer Messenger (n8n training)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-27T03:35:13.763Z",
+  "id": "DFSQxDPYFwmdQacT",
+  "meta": null,
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "getAllPeople",
+        "returnAll": true
+      },
+      "id": "21e04da0-2735-4ede-96d6-d8a324439e6f",
+      "name": "Customer Datastore",
+      "type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
+      "position": [
+        580,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## About the very quick quickstart workflow\n\nThis is an incomplete workflow, used in the [very quick quickstart](https://docs.n8n.io//try-it-out/quickstart/) tutorial.",
+        "height": 220,
+        "width": 300
+      },
+      "id": "f9bd33e7-5342-4b0b-ad42-70ff56a1640a",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        140,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "**Get fake sample data**",
+        "height": 300,
+        "width": 220
+      },
+      "id": "161ce119-5bdb-44ae-b98d-de3d3393957e",
+      "name": "Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        520,
+        20
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "**Extract data and prepare it for use in the next node**",
+        "height": 300,
+        "width": 220
+      },
+      "id": "ccefbe67-253c-4a15-a746-b11d4daf740c",
+      "name": "Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        900,
+        40
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "0f927b7f-0e2b-4abf-b116-88c99bf14dc5",
+      "name": "When clicking \"Test Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        240,
+        60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "df041e3c-fc09-4ba2-8e6b-37f2c6a02526",
+              "name": "customer_id",
+              "type": "string",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "id": "bf288953-4fef-4f55-a45f-c223714919c0",
+              "name": "customer_name",
+              "type": "string",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "id": "1cff0b21-6740-4697-9d2c-9bcb045af0be",
+              "name": "customer_description",
+              "type": "string",
+              "value": "={{ $json.notes }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2a4758df-7365-4da8-8cd7-db1ee1b89f53",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        960,
+        140
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "customerId": "={{ $json.customer_id }}",
+        "message": "=Hi {{ $json.customer_name }}. Your description is: {{ $json.customer_description }}"
+      },
+      "type": "n8n-nodes-base.n8nTrainingCustomerMessenger",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        120
+      ],
+      "id": "8df8a028-dc2c-4071-bd0e-3c9893e4fafb",
+      "name": "Customer Messenger (n8n training)"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-11T02:32:57.750Z",
+  "versionId": "8b0c9224-0ff4-41c9-b2f5-5ba5fe86cc76"
+}
