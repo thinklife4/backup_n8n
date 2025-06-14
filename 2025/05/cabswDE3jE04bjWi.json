@@ -1,0 +1,73 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-31T02:41:10.171Z",
+  "id": "cabswDE3jE04bjWi",
+  "meta": null,
+  "name": "Main Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -340,
+        -640
+      ],
+      "id": "ae9f6efe-b90c-4cdc-a7e0-34bd772eeaa0",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ $workflow.name }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -500
+      ],
+      "id": "4a471dcd-c04d-4614-aac6-fefe64c2a67a",
+      "name": "Stop and Error"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "Cag6KRXc9QAo03XT"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-31T02:57:12.391Z",
+  "versionId": "d7ef5f61-fef3-4b6c-bd9f-d3631bda059d"
+}
