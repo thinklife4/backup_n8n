@@ -1,0 +1,124 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-27T12:27:36.480Z",
+  "id": "iSpsxlrnZqj2iPyJ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -680,
+        -420
+      ],
+      "id": "f1d88229-e387-4c67-b0b5-4a576095dffe",
+      "name": "When chat message received",
+      "webhookId": "aeeeb957-3a1d-487e-8c31-9ca48ae98056"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=当前的省份是{{ $json.chatInput }},输出省份下的所有城市和当前的省份，格式遵循提供的JSON Schema",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a helpful assistant"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        -140,
+        -180
+      ],
+      "id": "a7298dc2-e414-4f81-a28f-470824f678f8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        40
+      ],
+      "id": "ec55567c-7f1e-4fa9-96eb-6e30de697524",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "urJdl7L9yqOfjoed",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        100,
+        60
+      ],
+      "id": "e0e4c059-f44e-4cf0-bd2f-f7c9d5d70ac9",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "aPe5m2pIgZYslaA3"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-31T02:35:18.519Z",
+  "versionId": "aba59af9-668d-483c-8f89-21e430131b50"
+}
