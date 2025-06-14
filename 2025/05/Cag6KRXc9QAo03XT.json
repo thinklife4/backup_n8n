@@ -1,0 +1,122 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-31T02:43:16.381Z",
+  "id": "Cag6KRXc9QAo03XT",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Error Log",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        -480
+      ],
+      "id": "6822f7e8-2966-4a13-8505-a13ffd5109ab",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "17QsPZomhznVFzQpl2nMvukHxjQmFOYlBL4a2tpB786c",
+          "mode": "list",
+          "cachedResultName": "Log Error",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17QsPZomhznVFzQpl2nMvukHxjQmFOYlBL4a2tpB786c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17QsPZomhznVFzQpl2nMvukHxjQmFOYlBL4a2tpB786c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -380,
+        -20
+      ],
+      "id": "6ca4ca59-9334-4c0c-91c3-98746c30ec37",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U67BBi4V3qfrWNVs",
+          "name": "Google Sheets account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C080WR6GCS0",
+          "mode": "list",
+          "cachedResultName": "test"
+        },
+        "text": "={{ $json.execution.error.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -180,
+        -440
+      ],
+      "id": "eb36069b-e357-46bb-9c39-bfac7ce2dc9c",
+      "name": "Slack",
+      "webhookId": "757c2f93-2e80-4dc2-a990-fa79f4cc30ac",
+      "credentials": {
+        "slackApi": {
+          "id": "8CZKj6SUOHO77I7r",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-31T02:51:17.793Z",
+  "versionId": "1f84abcf-a388-40dc-9bf6-d3e7e31386ad"
+}
