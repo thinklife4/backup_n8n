@@ -1,0 +1,180 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "NASA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NASA": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "PostBin",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PostBin1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-27T03:55:55.894Z",
+  "id": "8DKD6aviqLaynZqd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "NASN workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -360,
+        -80
+      ],
+      "id": "6a1ef53e-7861-4102-a6e3-ee5b310903fb",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "donkiSolarFlare",
+        "additionalFields": {
+          "startDate": "={{ $today.minus(7, 'days').toFormat('yyyy-MM-dd') }}"
+        }
+      },
+      "type": "n8n-nodes-base.nasa",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -80
+      ],
+      "id": "2e792c88-65ae-4097-9dbb-921bd4362fa8",
+      "name": "NASA",
+      "alwaysOutputData": false,
+      "credentials": {
+        "nasaApi": {
+          "id": "F7ihyEeRfBjChhE1",
+          "name": "NASA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b1557486-7914-4147-a3b9-fee0d4fc2f57",
+              "leftValue": "={{ $json.instruments }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "array",
+                "operation": "lengthEquals",
+                "rightType": "number"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -80
+      ],
+      "id": "e6bfe913-69b5-4d26-819a-208c959b368b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1745733477818-9046875752974",
+        "binContent": "=There was a solar flare of class {{ $json.classType }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.postBin",
+      "typeVersion": 1,
+      "position": [
+        380,
+        -180
+      ],
+      "id": "59fde3bb-32e3-4596-9ddb-f274d5301fca",
+      "name": "PostBin"
+    },
+    {
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1745733477818-9046875752974",
+        "binContent": "=False Node {{ $json.classType }}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.postBin",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "b006f378-5b61-432d-8ddc-4d35172ed046",
+      "name": "PostBin1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-24T05:16:29.566Z",
+  "versionId": "7e33097b-e77d-4280-8897-c85f9bf2b576"
+}
