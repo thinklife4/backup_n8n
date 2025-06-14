@@ -1,0 +1,138 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Customer Datastore (n8n training)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Customer Datastore (n8n training)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Customer Messenger (n8n training)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-11T02:35:12.188Z",
+  "id": "q5P4QbaXfJjQUDee",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "edit fields example",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -160
+      ],
+      "id": "d5d9bc3b-9e79-4360-b07c-64b819fde58d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAllPeople",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.n8nTrainingCustomerDatastore",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -80
+      ],
+      "id": "5e98f549-227e-42ed-baa0-152509289535",
+      "name": "Customer Datastore (n8n training)"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a4513fd7-2a66-41aa-9bea-7b1147905962",
+              "name": "user_name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "96b97676-9d62-455a-b092-4c9268cf26da",
+              "name": "user_email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "8530c024-4254-4fb2-8876-087b8799b155",
+              "name": "user_id_username",
+              "value": "={{ $json.id + \" \" + $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "73c8ccce-075d-4477-a90d-de1a2913142c",
+              "name": "info",
+              "value": "={\n\"name\": \"{{ $json.name }}\",\n\"id\": {{ $json.id }}\n}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        -220
+      ],
+      "id": "ddfd884b-fffe-48b8-9ea2-80dbd3e21d0d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "customerId": "={{ $json.user_email }}",
+        "message": "=Hello, {{ $json.info.name }}"
+      },
+      "type": "n8n-nodes-base.n8nTrainingCustomerMessenger",
+      "typeVersion": 1,
+      "position": [
+        440,
+        20
+      ],
+      "id": "e6c83042-e464-4821-ad18-ec210da7df1d",
+      "name": "Customer Messenger (n8n training)"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-11T06:43:56.283Z",
+  "versionId": "09ee51bf-e84c-41f6-b323-f60b23b45a61"
+}
