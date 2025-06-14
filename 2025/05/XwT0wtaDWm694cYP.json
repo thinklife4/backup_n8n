@@ -1,0 +1,80 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-10T02:48:56.799Z",
+  "id": "XwT0wtaDWm694cYP",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7054dcfc-3949-43a2-8af2-48706a0a38c2",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s",
+          "mode": "list",
+          "cachedResultName": "n8n通信文件",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "工作表1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "id": "18029671-b72e-4854-a400-3cd009ae7aa8",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U67BBi4V3qfrWNVs",
+          "name": "Google Sheets account 3"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-10T02:48:56.799Z",
+  "versionId": "db8fe5cc-1864-4184-94dd-fd44631bdf76"
+}
