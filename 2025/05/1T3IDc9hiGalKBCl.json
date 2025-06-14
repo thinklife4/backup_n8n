@@ -1,0 +1,502 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Read keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Is oppounity",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Output": {
+      "main": [
+        []
+      ]
+    },
+    "Has Oppounity": {
+      "main": [
+        [
+          {
+            "node": "Write Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter higher quality posts": {
+      "main": [
+        [
+          {
+            "node": "Extract fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract fields": {
+      "main": [
+        [
+          {
+            "node": "Is oppounity",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape reddit": {
+      "main": [
+        [
+          {
+            "node": "Filter higher quality posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read keywords": {
+      "main": [
+        [
+          {
+            "node": "Scrape reddit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is oppounity": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Has Oppounity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-06T00:28:54.672Z",
+  "id": "1T3IDc9hiGalKBCl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reddit Digger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        -260
+      ],
+      "id": "3a336e1b-5a7a-4cca-902d-279e27558c25",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        380,
+        -440
+      ],
+      "id": "de55865d-9cf0-4600-a5bb-76825c2ef9e9",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "urJdl7L9yqOfjoed",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        720,
+        -240
+      ],
+      "id": "783d28da-9a11-4404-a51a-228ae4579b80",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY",
+          "mode": "list",
+          "cachedResultName": "reddit_keywords",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 67070844,
+          "mode": "list",
+          "cachedResultName": "工作表5",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY/edit#gid=67070844"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1400,
+        80
+      ],
+      "id": "bf9ec0e0-fdc2-4a03-be8f-1048a56b498d",
+      "name": "Write Output",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tOpUDwZmPglmAagR",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d0df2a55-c201-410b-bcee-03939a8aa643",
+              "leftValue": "={{ $json.is_oppounity }}",
+              "rightValue": "Yes",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1180,
+        20
+      ],
+      "id": "0389ebee-e937-4869-a153-6db39c6d1189",
+      "name": "Has Oppounity"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "de04fa7d-cfc9-40a0-bf4f-17e4eeb2c53b",
+              "leftValue": "={{ $json.ups }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "3ab1c7ff-6f17-477a-bef4-dc79e30577d0",
+              "leftValue": "={{ $json.created * 1000 }}",
+              "rightValue": "={{ new Date().setMonth(new Date().getMonth() - 12) }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "b20b5bcf-3baf-4d2e-bc2d-5b9d903a3950",
+              "leftValue": "={{ $json.selftext }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        -80
+      ],
+      "id": "fa01db2f-d5ea-4b2f-8216-89ef4d83e571",
+      "name": "Filter higher quality posts"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "97507571-3b25-4dca-8d25-f4b86ef4f249",
+              "name": "content",
+              "value": "={{ $json.selftext }}",
+              "type": "string"
+            },
+            {
+              "id": "6518cb93-af94-4a91-a0ab-b1e88c0a9800",
+              "name": "subreddit",
+              "value": "={{ $json.subreddit }}",
+              "type": "string"
+            },
+            {
+              "id": "322abb0b-0b68-416e-b9bf-9fcdbdb66af4",
+              "name": "upvote_ratio",
+              "value": "={{ $json.upvote_ratio }}",
+              "type": "number"
+            },
+            {
+              "id": "2e7d64ce-e2df-4f8f-8a67-ba6272f275a6",
+              "name": "ups",
+              "value": "={{ $json.ups }}",
+              "type": "number"
+            },
+            {
+              "id": "c66b72e3-44d2-49e4-92e0-1d95e1a13687",
+              "name": "view_count",
+              "value": "={{ $json.view_count }}",
+              "type": "string"
+            },
+            {
+              "id": "7556f66e-1107-473a-8eb7-01c8794e203f",
+              "name": "num_comments",
+              "value": "={{ $json.num_comments }}",
+              "type": "number"
+            },
+            {
+              "id": "139e31a0-267f-4c6e-a6ef-b7f44358288b",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        -260
+      ],
+      "id": "2a983b7d-ac4f-41b0-b625-d1fa3c84e019",
+      "name": "Extract fields"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "subreddit": "macapps",
+        "keyword": "={{ $json.keyword }}",
+        "limit": 10,
+        "additionalFields": {
+          "sort": "hot"
+        }
+      },
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        -260
+      ],
+      "id": "4a4b97f1-0074-4178-b0ca-55cc881af436",
+      "name": "Scrape reddit",
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "vopkwpPYcNVZ3ibE",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY",
+          "mode": "list",
+          "cachedResultName": "reddit_keywords",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "keywords",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19RbKEv3n38eOUt4UrPqp2mxHgIuUCPNlojZ565U96dY/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -560,
+        -400
+      ],
+      "id": "f5807d9f-4265-46ce-a460-29737e8b595b",
+      "name": "Read keywords",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tOpUDwZmPglmAagR",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=### System\nYou are a content-classifier.  \nTask: decide whether a Reddit post describes **a business-related problem or a need for a solution**.  \nCriteria for “Yes”  \n1. The post clearly mentions a challenge / pain-point / requirement faced by a business, startup, team, or professional role.  \n2. The author is seeking advice, tools, or ideas to solve that challenge.  \n\nIf BOTH criteria are met → output **Yes**.  \nOtherwise → output **No**.  \n\nOutput **exactly** “Yes” or “No” (case-sensitive, no extra text).\n\n### User\n<POST>\n{{ $json.content }}\n</POST>\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        360,
+        -680
+      ],
+      "id": "4437053c-8c79-469d-8e7e-91e5dbfa8420",
+      "name": "Is oppounity"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2e09f1ef-466b-4461-999c-7461a3ec0ada",
+              "name": "origin_post",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            },
+            {
+              "id": "0e69c677-0d63-473a-80be-dbb71dd04365",
+              "name": "subreddit",
+              "value": "={{ $json.subreddit }}",
+              "type": "string"
+            },
+            {
+              "id": "60a3766d-2869-4245-9fdd-926cad02876b",
+              "name": "likes",
+              "value": "={{ $json.ups }}",
+              "type": "number"
+            },
+            {
+              "id": "e4b34a86-ff1f-4b25-86b7-2e6a02f00bba",
+              "name": "num_comments",
+              "value": "={{ $json.num_comments }}",
+              "type": "number"
+            },
+            {
+              "id": "e7284252-2ccb-472c-8fa4-b14e8e0457b4",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "db2e9cb9-6f51-40fc-bdb9-9967c12888b5",
+              "name": "is_oppounity",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        -100
+      ],
+      "id": "4a961153-fc1d-4604-95ff-4d7c6774d36f",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-06T09:22:48.132Z",
+  "versionId": "a1214073-78eb-443b-b2e2-a3fcd03edf2b"
+}
