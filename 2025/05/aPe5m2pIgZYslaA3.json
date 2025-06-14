@@ -1,0 +1,74 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-05-10T00:56:14.635Z",
+  "id": "aPe5m2pIgZYslaA3",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Google Sheet Writer",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        80
+      ],
+      "id": "56f548e0-7125-4267-a835-93749515d99a",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s",
+          "mode": "list",
+          "cachedResultName": "n8n通信文件",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "工作表1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hi3XXSQbkgu_0h5OHZyMemkuDNhQnlkxDxnmEa9HH2s/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        360,
+        80
+      ],
+      "id": "4ad6c9c1-a7e9-4fa5-9d50-2575916a08de",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O2VwHUO7F6xQ93uv",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-10T02:36:00.579Z",
+  "versionId": "4db1c5a0-fc75-4bb7-9da9-5be99d3ae861"
+}
