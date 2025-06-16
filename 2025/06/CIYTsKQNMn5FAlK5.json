@@ -1,0 +1,91 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-16T13:14:39.791Z",
+  "id": "CIYTsKQNMn5FAlK5",
+  "meta": null,
+  "name": "My workflow 11",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "abc",
+        "authentication": "basicAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        -80
+      ],
+      "id": "93cf849d-2f9a-4095-9eb7-b0143f8e3590",
+      "name": "Webhook",
+      "webhookId": "f44f8aad-c17d-454c-9083-097472d98299"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        -80
+      ],
+      "id": "1f3a4acb-ebf2-4b37-a18d-419817aa481e",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -260,
+        -260
+      ],
+      "id": "220ca195-a22e-47d4-b4e3-66b4858c2693",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -40
+      ],
+      "id": "c3d47d84-0143-4bc3-ab57-7850badf165e",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-16T22:29:44.705Z",
+  "versionId": "1125ce12-09be-44b6-b6df-6c8187ef622c"
+}
