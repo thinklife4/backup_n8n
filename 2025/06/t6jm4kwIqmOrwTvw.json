@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -286,7 +286,7 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        760,
+        740,
         -20
       ],
       "typeVersion": 1
@@ -333,8 +333,8 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "5sGuT7ZXUezDAO2f",
-          "name": "n8n account"
+          "id": "hrlsgfmNn69dEGXl",
+          "name": "n8n account 2"
         }
       }
     },
@@ -533,8 +533,8 @@
       "webhookId": "f9025a0f-9ed4-4c25-9435-b682a38bdf52",
       "credentials": {
         "githubOAuth2Api": {
-          "id": "ixYALYqqAqE1GQXs",
-          "name": "GitHub account 3"
+          "id": "Wo0klFs4zscKpMzU",
+          "name": "GitHub account 4"
         }
       }
     },
@@ -568,8 +568,8 @@
       "webhookId": "3bdd045d-6122-4403-8520-cd9c76aa5aba",
       "credentials": {
         "githubOAuth2Api": {
-          "id": "ixYALYqqAqE1GQXs",
-          "name": "GitHub account 3"
+          "id": "Wo0klFs4zscKpMzU",
+          "name": "GitHub account 4"
         }
       }
     },
@@ -601,7 +601,7 @@
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        740,
+        720,
         160
       ],
       "typeVersion": 1.2
@@ -798,8 +798,8 @@
       "webhookId": "1399e526-ffb7-405c-9e09-4a8b89bd4c13",
       "credentials": {
         "githubOAuth2Api": {
-          "id": "ixYALYqqAqE1GQXs",
-          "name": "GitHub account 3"
+          "id": "Wo0klFs4zscKpMzU",
+          "name": "GitHub account 4"
         }
       },
       "continueOnFail": true
@@ -848,9 +848,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-14T09:49:44.087Z",
-  "versionId": "6adbb80d-c253-4be9-a298-d14f165df0f0"
+  "triggerCount": 1,
+  "updatedAt": "2025-06-14T10:02:34.507Z",
+  "versionId": "7696303e-1c75-421e-9d68-98f399b882e2"
 }
