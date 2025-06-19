@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {},
   "createdAt": "2025-06-16T13:14:39.791Z",
   "id": "CIYTsKQNMn5FAlK5",
@@ -7,7 +7,40 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 11",
-  "nodes": [],
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            },
+            {},
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -160,
+        0
+      ],
+      "id": "6e04ba5e-657b-4403-9daf-83612a293ca9",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -200
+      ],
+      "id": "c876ab4b-6e15-4ad2-8dd3-d8b6e43af1ce",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
   "pinData": {},
   "repo_name": "backup_n8n",
   "repo_owner": "thinklife4",
@@ -15,9 +48,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-06-17T13:28:00.572Z",
-  "versionId": "fe7a8a11-4cd7-4510-adf2-7cc70c889153"
+  "updatedAt": "2025-06-18T00:43:47.852Z",
+  "versionId": "eac6dedc-6b5c-4979-a017-5f0e20f69e5b"
 }
