@@ -1,0 +1,83 @@
+{
+  "active": false,
+  "connections": {
+    "YouTube video URL": {
+      "main": [
+        [
+          {
+            "node": "Request YouTube Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request YouTube Transcript": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-25T05:13:48.666Z",
+  "id": "4RBaemRknBFcTNRJ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Youtube Video Maker",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Your Dialog Video URL",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Full URL"
+            }
+          ]
+        },
+        "options": {
+          "path": "ddd"
+        }
+      },
+      "id": "1ff7f8c6-bfb8-45ab-a1c3-8908d600bdff",
+      "name": "YouTube video URL",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -60,
+        160
+      ],
+      "webhookId": "3dc17600-3020-40b1-be8f-e65ef45269b6",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/pintostudio~youtube-transcript-scraper/run-sync-get-dataset-items?token=apify_api_Ebv4OK9CsPF93ddecFzjc4xEZfhPfZ2opx2x",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"videoUrl\": \"{{ $json['Full URL'] }}\"\n}",
+        "options": {}
+      },
+      "id": "5cab3d0f-ebcf-42c4-95d2-eb55a3b08915",
+      "name": "Request YouTube Transcript",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        240,
+        140
+      ],
+      "typeVersion": 4.2
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-25T07:09:19.727Z",
+  "versionId": "bd1c8a6c-0790-4ffb-8315-96c6d0fc2806"
+}
