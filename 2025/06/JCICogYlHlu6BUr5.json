@@ -1,0 +1,724 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "changeME",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "FunctionItem",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "NotifyBetterPrice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "savedItems",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF4": {
+      "main": [
+        [
+          {
+            "node": "NotifyIncorrectPrice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "checkifexists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "initItem1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "changeME": {
+      "main": [
+        [
+          {
+            "node": "initItem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetchWeb": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "initItem": {
+      "main": [
+        [
+          {
+            "node": "fetchWeb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "initItem1": {
+      "main": [
+        [
+          {
+            "node": "changeME",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SaveToFile": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "savedItems": {
+      "main": [
+        [
+          {
+            "node": "itemsToJSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "itemsToJSON": {
+      "main": [
+        [
+          {
+            "node": "updateSavedItems1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FunctionItem": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Extract": {
+      "main": [
+        [
+          {
+            "node": "getActualPrice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JsonToBinary": {
+      "main": [
+        [
+          {
+            "node": "SaveToFile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "checkifexists": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getActualPrice": {
+      "main": [
+        [
+          {
+            "node": "IF4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "updateSavedItems": {
+      "main": [
+        [
+          {
+            "node": "JsonToBinary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data1": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NotifyBetterPrice": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "updateSavedItems1": {
+      "main": [
+        [
+          {
+            "node": "updateSavedItems",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Binary File1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NotifyIncorrectPrice": {
+      "main": [
+        [
+          {
+            "node": "checkifexists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-26T09:21:04.995Z",
+  "id": "JCICogYlHlu6BUr5",
+  "meta": null,
+  "name": "Competitor Notify",
+  "nodes": [
+    {
+      "parameters": {
+        "extractionValues": {
+          "values": [
+            {
+              "key": "price",
+              "cssSelector": "={{$node[\"initItem\"].json[\"selector\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "HTML Extract",
+      "type": "n8n-nodes-base.htmlExtract",
+      "position": [
+        -580,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "d4076a30-8313-4948-ab07-31e4cb924ddd"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 15,
+              "unit": "minutes"
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -1640,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "b2536934-aeb7-407b-87b2-d0ac9c5741a9"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\nvar price = String(item.price).replace(\",\", \".\");\nprice = parseFloat(price);\n//price = price.replace(/\\D/g, '');\n//item.price = String(item.price).replace(\",\", \".\");\n//item.price = parseFloat(item.price);\n\nitem.priceExists = (price > 0 ? true : false)\nitem.price = price;\n\n// Update its data\nglobalData.actualPrice = item;\n\nreturn item;"
+      },
+      "name": "getActualPrice",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        -380,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "f12777e4-a32e-45ac-a762-5f3f28bdf560"
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"initItem\"].json[\"link\"]}}",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "fetchWeb",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -760,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "44acf954-5310-4eb5-8772-d5c089a7b917"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\nglobalData.iteration = 0;\n//var thiselem = $node[\"initItem\"].json;\n\n//const s1 = {'slug': thiselem.slug, \"link\": thiselem.link, \"selector\": thiselem.selector, \"price\":$node[\"getActualPrice\"].json.price, \"currency\": thiselem.currency};\n//const s2 = {'slug': thiselem.slug+'2', \"link\": thiselem.link, \"selector\": thiselem.selector, \"price\":$node[\"getActualPrice\"].json.price, \"currency\": thiselem.currency};\n//const s3 = {'slug': thiselem.slug+'3', \"link\": thiselem.link, \"selector\": thiselem.selector, \"price\":$node[\"getActualPrice\"].json.price, \"currency\": thiselem.currency};\n\nreturn $node[\"changeME\"].json.myWatchers;\n"
+      },
+      "name": "FunctionItem",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        520,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "849de49f-438b-4be6-b28f-11e19ccc3db5"
+    },
+    {
+      "parameters": {
+        "fileName": "/data/kopacky.json",
+        "dataPropertyName": "=price",
+        "options": {}
+      },
+      "name": "Write Binary File1",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        1340,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "28be8d01-e46e-4aca-aa4a-412c9979e974"
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "destinationKey": "price",
+        "options": {}
+      },
+      "name": "Move Binary Data1",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        920,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "9f5aff41-b179-4c91-8343-6b2db9b9ca11"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"checkifexists\"].json[\"stdout\"]}}",
+              "operation": "notEqual",
+              "value2": "Exists"
+            }
+          ]
+        }
+      },
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        200,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "1687c674-6915-475f-9630-77ef46c2cb27"
+    },
+    {
+      "parameters": {
+        "command": "if [ -r /data/kopacky.json ]; then echo Exists; fi"
+      },
+      "name": "checkifexists",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        60,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "86be988b-d61a-4140-873f-f69d583531e4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"checkifexists\"].json[\"stdout\"]}}",
+              "value2": "Exists"
+            }
+          ]
+        }
+      },
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        340,
+        640
+      ],
+      "typeVersion": 1,
+      "id": "cc604b6d-210b-4e89-938d-0e0c25156d21"
+    },
+    {
+      "parameters": {
+        "fileName": "/data/kopacky.json",
+        "dataPropertyName": "=price",
+        "options": {}
+      },
+      "name": "SaveToFile",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        1140,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "1fbf7037-1a0e-44b6-ada0-f513605a72ca"
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "destinationKey": "price",
+        "options": {}
+      },
+      "name": "JsonToBinary",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        1000,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "aebb24c1-deb4-4851-9a10-1a532bc9efe0"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\n//{'slug': 'kopacky', 'link': 'https://www.adsport.sk/kopacky-lisovky-adidas-x-19-3-ll-fg-ef0598/#1131861', 'currency': 'EUR'}[]\nvar myWatchers = [\n{'slug': 'kopacky', 'link': 'https://www.adsport.sk/kopacky-lisovky-adidas-x-19-3-ll-fg-ef0598/#1131861', 'selector':'.prices > strong:nth-child(1) > span:nth-child(1)', 'currency': 'EUR'},\n{'slug': 'kopacky2', 'link': 'https://www.adsport.sk/turfy-adidas-ace-tango-17-3-tf-by2203/', 'selector':'.col-xs-4 > strong:nth-child(1) > span:nth-child(1)', 'currency': 'EUR'},\n{'slug': 'mobilcek', 'link': 'https://mobil.bazos.sk/inzerat/112253662/predam-odolny-doogee-s60-52-4g-lte-nfc.php', 'selector':'.listadvlevo > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(2) > b:nth-child(2)', 'currency': 'EUR'},\n{'slug': 'ADIZERO RC 2', 'link': 'https://www.adsport.sk/panske-bezecke-topanky-adidas-adizero-rc-2-eg1187/', 'selector':'.col-xs-4 > strong:nth-child(1) > span:nth-child(1)', 'currency': 'EUR'}\n];\n\nitem.myWatchers = myWatchers;\nitem.watchersCount = myWatchers.length;\nglobalData.myWatchers = myWatchers;\n\nreturn item;"
+      },
+      "name": "changeME",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        -1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "03607a33-1766-495d-b248-11c0d5561629"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\nvar counter = globalData.iteration;\n\nitem.myWatchers[counter].watchersCount = item.watchersCount;\nitem.myWatchers[counter].canContinue = (globalData.iteration < item.watchersCount-1 ? true : false);\n//item.myWatchers[counter].canContinue = false;\n\nglobalData.iteration = counter + 1;\n\nreturn item.myWatchers[counter];"
+      },
+      "name": "initItem",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        -980,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "49b6b752-2103-4017-b044-4997df116c6a"
+    },
+    {
+      "parameters": {
+        "filePath": "/data/kopacky.json",
+        "dataPropertyName": "savedItems"
+      },
+      "name": "savedItems",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [
+        500,
+        520
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "096a9924-2651-48d5-b495-1fca21cc8b78",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "sourceKey": "savedItems",
+        "options": {}
+      },
+      "name": "itemsToJSON",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        520,
+        80
+      ],
+      "typeVersion": 1,
+      "id": "c326f21e-dc18-4a30-8a31-661eb5c843ad"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [],
+          "boolean": [
+            {
+              "value1": "={{$node[\"initItem\"].json[\"canContinue\"]}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1840,
+        440
+      ],
+      "typeVersion": 1,
+      "id": "245c5b82-8088-49f7-818e-d89939fd1624"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\nglobalData.iteration = 0;\n\nreturn item;"
+      },
+      "name": "initItem1",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        -1420,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "ee145396-20e0-4386-a9f1-29a7c0f804ea"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$node[\"getActualPrice\"].json[\"price\"]}}",
+              "value2": "={{$node[\"updateSavedItems1\"].json[\"oldPrice\"]}}"
+            }
+          ],
+          "string": []
+        }
+      },
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1340,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "5ec6a9b2-0390-4ca8-8c9a-eef78c56a08a"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\n\nvar myitems = [];\nvar i;\nfor (i = 0; i < item.items.length; i++) { \n  if($node[\"initItem\"].json.slug == item.items[i].slug && $node[\"getActualPrice\"].json.price < item.items[i].price) {\n    item.items[i].price = $node[\"getActualPrice\"].json.price;\n  }\n  myitems.push(item.items[i]);\n} \n\nreturn myitems;\n"
+      },
+      "name": "updateSavedItems",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        840,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "b4bd81f4-8c15-47f7-bb02-6dd2dbcbff46"
+    },
+    {
+      "parameters": {
+        "functionCode": "const globalData = getWorkflowStaticData('global');\nvar oldPrice = null;\nvar myitems = [];\nvar i;\nfor (i = 0; i < item.length; i++) {\n  if($node[\"initItem\"].json.slug == item[i].slug) {\n\n    item[i].link = $node[\"initItem\"].json.link;\n    item[i].selector = $node[\"initItem\"].json.selector;\n    item[i].currency = $node[\"initItem\"].json.currency;\n    \n    if(!item[i].price){\n      item[i].price = $node[\"getActualPrice\"].json.price;\n    }\n    \n    if($node[\"getActualPrice\"].json.price < item[i].price){\n      oldPrice = item[i].price;\n      item[i].price = $node[\"getActualPrice\"].json.price;\n    }\n    \n    \n  }\n  \n  myitems.push(item[i]);\n} \n\n//item.somar = $node[\"initItem\"].json;\n//return globalData.actualPrice;\n\nvar itemm = {};\nitemm.items = myitems;\nitemm.oldPrice = oldPrice;\nreturn itemm;\n"
+      },
+      "name": "updateSavedItems1",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        700,
+        80
+      ],
+      "typeVersion": 1,
+      "id": "03a44c7c-b848-4442-89c1-55b841217307"
+    },
+    {
+      "parameters": {
+        "command": "file=\"/data/kopacky.json\"\n[ -f $file ] && rm $file"
+      },
+      "name": "cleanData",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        -1640,
+        -40
+      ],
+      "typeVersion": 1,
+      "id": "0c03d175-939c-43cb-9e31-62c998f9c5d5",
+      "notes": "This will remove all storaged data."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [],
+          "boolean": [
+            {
+              "value1": "={{$node[\"getActualPrice\"].json[\"priceExists\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "IF4",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -200,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "3b6419a1-7777-4083-95db-082852540ae7"
+    },
+    {
+      "parameters": {
+        "fromEmail": "hostovecky@weyou.sk",
+        "toEmail": "sthosstudio@gmail.com",
+        "subject": "=Nová cena - {{$node[\"initItem\"].json[\"slug\"]}} - {{$node[\"getActualPrice\"].json[\"price\"]}} {{$node[\"initItem\"].json[\"currency\"]}}",
+        "text": "=",
+        "html": "=<h2>Nová cena je: {{$node[\"getActualPrice\"].json[\"price\"]}} {{$node[\"initItem\"].json[\"currency\"]}}</h2><br>\nPôvodná cena bola: {{$node[\"updateSavedItems1\"].json[\"oldPrice\"]}} {{$node[\"initItem\"].json[\"currency\"]}}<br>\nURL: {{$node[\"initItem\"].json[\"link\"]}}",
+        "options": {}
+      },
+      "name": "NotifyBetterPrice",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1340,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "deed1aa9-3724-41c2-af8a-6707efc05ac4",
+      "credentials": {
+        "smtp": {
+          "id": null,
+          "name": "hostovecky@weyou.sk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "hostovecky@weyou.sk",
+        "toEmail": "sthosstudio@gmail.com",
+        "subject": "={{$node[\"initItem\"].json[\"slug\"]}} - Getting price issue.",
+        "text": "=",
+        "html": "=Please check the link or selector for the item with slug <strong>{{$node[\"initItem\"].json[\"slug\"]}}</strong><br>\nURL: {{$node[\"initItem\"].json[\"link\"]}}",
+        "options": {}
+      },
+      "name": "NotifyIncorrectPrice",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        -80,
+        -160
+      ],
+      "typeVersion": 1,
+      "id": "a16a30cd-a0f4-47ab-80ae-8068fc8ddc8a",
+      "credentials": {
+        "smtp": {
+          "id": null,
+          "name": "hostovecky@weyou.sk"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "backup_n8n",
+  "repo_owner": "thinklife4",
+  "repo_path": "",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-26T09:22:25.632Z",
+  "versionId": "08b48fd6-90d4-4dd7-8538-6b406fa76ccc"
+}
